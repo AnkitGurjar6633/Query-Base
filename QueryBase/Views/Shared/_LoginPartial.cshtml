@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="navbar-nav">
+@* @if (SignInManager.IsSignedIn(User)) *@
+@if (User.Identity.IsAuthenticated)
+{
+    <li class="nav-item">
+       @*  <a id="manage" class="nav-link" title="Manage">Hello @UserManager.GetUserName(User)!</a> *@
+            <a id="manage" class="nav-link" title="Manage" href="#"><i class="bi bi-person-circle me-1"></i>  @User.Identity.Name</a>
+    </li>
+    <li class="nav-item">
+        <form id="logoutForm" class="form-inline" >
+            <button id="logout" type="submit" class="nav-link btn btn-link border-0" asp-area="Identity" asp-controller="Account" asp-action="Logout">Logout</button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+            <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Register" ? "active":"")" id="register" asp-area="Identity" asp-controller="Account" asp-action="Register">Register</a>
+    </li>
+    <li class="nav-item">
+            <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Login" ? "active":"")" id="login" asp-area="Identity" asp-controller="Account" asp-action="Login">Login</a>
+    </li>
+}
+</ul>

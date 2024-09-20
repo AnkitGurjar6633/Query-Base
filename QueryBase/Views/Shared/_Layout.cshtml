@@ -1,0 +1,123 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - QueryBase</title>
+    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/flatly/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/QueryBase.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/ckeditor5.css">
+    <link rel="stylesheet" href="~/css/ckeditor5Editor.css" asp-append-version="true" />
+</head>
+<body >
+    <header>
+
+        <nav class="navbar navbar-expand-lg bg-primary sticky-top" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="Users" asp-controller="Home" asp-action="Index">QueryBase</a>
+                <ul class="navbar-nav me-auto d-block d-lg-none d-flex flex-row">
+                    <li class="nav-item">
+                        <div class="vr h-100 mx-2 text-white"></div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="d-flex ps-2 form-check form-switch">
+                            <input class="mx-1 align-self-center form-check-input" role="button" type="checkbox" id="themeButton" onclick="handleThemeButtonClick()">
+                            <label class="px-1 pt-1 mt-2 nav-link form-check-label" role="button" href="#" id="themeLabel" onclick="handleThemeLabelClick()"></label>
+                        </div>
+                    </li>
+                </ul>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor04" aria-controls="navbarColor04" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor04">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" ? "active":"")" asp-area="Users" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Users" asp-action="Ask" asp-controller="AskQuestion">Ask a Question</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Admin" asp-action="Index" asp-controller="Category">Category</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="about" href="#">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Separated link</a>
+                            </div>
+                        </li>
+                        <li class="nav-item py-2 py-lg-1">
+                            <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+                            <hr class="d-lg-none my-2 text-white-50" />
+                        </li>
+                        <li class="nav-item d-none d-lg-block">
+                            <div class="d-flex ps-2 form-check form-switch">
+                                <input class="mx-1 align-self-center form-check-input" role="button" type="checkbox" id="md-themeButton" onclick="handleMDThemeButtonClick()">
+                                <label class="px-1 nav-link form-check-label" role="button" href="#" id="md-themeLabel" onclick="handleThemeLabelClick()"></label>
+                            </div>
+                        </li>
+
+
+
+
+                    </ul>
+
+                    <partial name="_LoginPartial" />
+
+                </div>
+            </div>
+        </nav>
+
+
+
+
+        @* <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="User" asp-controller="Home" asp-action="Index">QueryBase</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="User" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Identity" asp-controller="Register" asp-action="Index">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav> *@
+    </header>
+    <div >
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted bg-primary" data-bs-theme="dark">
+        <div class="container">
+            &copy; 2024 - QueryBase - <a asp-area="" asp-controller="Home" asp-action="Privacy" class="link">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/themeToggle.js"></script>
+    @* <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> *@
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

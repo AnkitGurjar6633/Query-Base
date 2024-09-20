@@ -1,0 +1,37 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.form-check-input:checked{
+    background-color: black;
+    border-color: black;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.fs-small{
+    font-size:13px;
+}
+
+@media (min-width:768px){
+    .stat-box{
+        min-width:12%;
+    }
+}
+
+.link{
+    color:rgba(24,188,156,1);
+}

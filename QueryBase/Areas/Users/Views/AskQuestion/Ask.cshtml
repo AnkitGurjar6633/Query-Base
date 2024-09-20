@@ -1,0 +1,53 @@
+﻿@model AskQuestionVM
+
+<div class="container mt-3">
+    <div class="h2 my-5">Ask a public question</div>
+        <form method="post">
+            <div class="form-control d-flex flex-column p-3 my-3">
+                <label asp-for="Title" class="form-label h5 mb-0 fw-bold">Title</label>
+                <small class="text-body-secondary my-1 ms-1 ">Be specific and imagine you're asking a question to another person.</small>
+                <input asp-for="Title" class="form-control form-control-sm ps-3 py-2 rounded-2" placeholder="e.g. Is there a R function for finding index of an element in a vector?" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            
+            
+            <div class="form-control d-flex flex-column p-3 my-3">
+                <label asp-for="Description" class="form-label h5 mb-0 fw-bold">What are the details of your problem?</label>
+                <small class="text-body-secondary my-1 mb-2 ms-1 ">Introduce the problem and expand on what you put in the title. Minimum 20 characters.</small>
+                <div class="main-container">
+                    <div class="editor-container editor-container_classic-editor" id="editor-container">
+                        <div class="editor-container__editor">
+                            <textarea asp-for="Description"  id="editor"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-control d-flex flex-column p-3 my-3">
+                <label asp-for="CategoryId" class="form-label h5 mb-0 fw-bold">Tag</label>
+                <small class="text-body-secondary my-1 ms-1" >Add up to 5 tags to describe what your question is about. Start typing to see suggestions.</small>
+                <select asp-for="CategoryId" asp-items="@Model.CategoryList" class="form-control form-control-sm ps-3 py-2 rounded-2" >
+                    <option disabled selected>--Select Category--</option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+        
+            <div class="my-3">
+                <button class="btn btn-outline-danger border-0" id="discard" href="#">Discard draft</button>
+                <button class="btn btn-outline-success border-0">Submit Question</button>
+            </div>
+        </form>
+</div>
+
+@section Scripts {
+    <script type="importmap">
+        {
+            "imports": {
+                "ckeditor5": "/js/ckeditor5.js",
+                "ckeditor5/": "/js/"
+            }
+        }
+    </script>
+    <script type="module" src="~/js/ckeditor5Editor.js"></script>
+}
