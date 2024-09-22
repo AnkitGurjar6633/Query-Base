@@ -4,6 +4,7 @@ using QueryBase.Models.ViewModels;
 
 namespace QueryBase.Areas.Users.Controllers
 {
+    [Area("Users")]
     public class QuestionController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

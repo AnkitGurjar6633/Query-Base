@@ -32,6 +32,21 @@ body {
     }
 }
 
+@media (max-width:768px){
+    .fs-vsmall{
+        font-size:11px;
+    }
+}
+
+.fs-11{
+    font-size:11px;
+}
+
 .link{
     color:rgba(24,188,156,1);
+}
+
+.vote-btn {
+    padding: 10.400px,10.4px,10.4px,10.4px;
+    margin: 2px,2px,2px,2px;
 }
